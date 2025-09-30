@@ -4,6 +4,7 @@ import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import java.awt.event.*;
 import java.util.Arrays;
+import java.util.Locale;
 import javax.swing.event.ListSelectionListener;
 
 public class GUI {
@@ -58,7 +59,9 @@ public class GUI {
 
                         String countryCode = countryCodeConverter.fromCountry(country);
                         String languageCode = languageCodeConverter.fromLanguage(selectedLanguage);
-                        String result = translator.translate(countryCode, languageCode);
+                        System.out.println("language code: " + languageCode);
+                        System.out.println("country code: " + countryCode);
+                        String result = translator.translate(countryCode.toLowerCase(), languageCode);
                         if (result == null) {
                             result = "no translation found!";
                         }
@@ -71,18 +74,22 @@ public class GUI {
             list.addListSelectionListener(new ListSelectionListener() {
                     @Override
                     public void valueChanged(ListSelectionEvent e) {
-                        String selected = list.getSelectedValue();
-                        String language = languageComboBox.getSelectedItem().toString();
-                        System.out.println("Selected Country: " + selected);
+                        if (!e.getValueIsAdjusting()) {
+                            String selected = list.getSelectedValue();
+                            String language = languageComboBox.getSelectedItem().toString();
+                            System.out.println("Selected Country: " + selected);
 
 
-                        String countryCode = countryCodeConverter.fromCountry(selected);
-                        String languageCode = languageCodeConverter.fromLanguage(language);
-                        String result = translator.translate(countryCode, languageCode);
-                        if (result == null) {
-                            result = "no translation found!";
-                        }
-                        resultLabel.setText(result);
+                            String countryCode = countryCodeConverter.fromCountry(selected);
+                            String languageCode = languageCodeConverter.fromLanguage(language);
+                            System.out.println("language code: " + languageCode);
+                            System.out.println("country code: " + countryCode);
+                            String result = translator.translate(countryCode.toLowerCase(), languageCode);
+                            if (result == null) {
+                                result = "no translation found!";
+                            }
+                            resultLabel.setText(result);}
+
                     }
                 });
 
