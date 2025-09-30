@@ -25,7 +25,7 @@ public class JListDemo {
 
             JComboBox<String> languageComboBox = new JComboBox<>();
             int i = 0;
-            for(String langaugeCode : translator.getLanguageCodes()) {
+            for (String langaugeCode : translator.getLanguageCodes()) {
                 items[i++] = langaugeCode;
             }
 
