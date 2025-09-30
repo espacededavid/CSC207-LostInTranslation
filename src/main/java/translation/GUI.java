@@ -2,9 +2,8 @@ package translation;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
+import java.awt.*;
 import java.awt.event.*;
-import java.util.Arrays;
-import java.util.Locale;
 import javax.swing.event.ListSelectionListener;
 
 public class GUI {
@@ -44,7 +43,7 @@ public class GUI {
             JList<String> list = new JList<>(items);
             list.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
             JScrollPane scrollPane = new JScrollPane(list);
-            languagePanel.add(scrollPane, 1);
+            countryPanel.add(scrollPane);
 
 
 
@@ -100,6 +99,12 @@ public class GUI {
             mainPanel.add(languagePanel);
             mainPanel.add(buttonPanel);
             mainPanel.add(countryPanel);
+
+//            mainPanel.setLayout(new BorderLayout()); // Use BorderLayout for the main panel
+//
+//            mainPanel.add(languagePanel, BorderLayout.NORTH); // Place languagePanel at the top
+//            mainPanel.add(buttonPanel, BorderLayout.CENTER); // Place the scrollPane (JList) in the center
+//            mainPanel.add(countryPanel, BorderLayout.SOUTH); // Place buttonPanel at the bottom
 
 
             JFrame frame = new JFrame("Country Name Translator");
